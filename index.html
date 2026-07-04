@@ -394,6 +394,104 @@
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration: 0.01ms !important; animation-delay: 0s !important; }
   }
+
+  /* --- print button --- */
+  .print-btn{
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .print-btn:hover{ background: var(--amber); color: var(--bg); }
+  .print-btn svg{ width: 14px; height: 14px; }
+
+  @media (max-width: 720px){
+    .print-btn{ top: 14px; right: 14px; padding: 8px 12px; font-size: 10px; }
+  }
+
+  /* --- print stylesheet (PDF / paper output) --- */
+  @media print {
+    .print-btn, .reg-mark, #github-modules { display: none !important; }
+
+    * { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+    html, body {
+      background: #ffffff !important;
+      color: #1a1a1a !important;
+    }
+    body::before { display: none !important; }
+
+    .wrap { max-width: 100%; padding: 24px 32px; }
+
+    .eyebrow { color: #555 !important; }
+    .eyebrow::before { background: #555 !important; }
+    h1 { color: #000 !important; }
+    .role-line { color: #333 !important; }
+    .role-line strong { color: #000 !important; }
+
+    .meta-strip { border-color: #999 !important; }
+    .meta-item { color: #444 !important; border-right-color: #ccc !important; }
+    .meta-item b { color: #000 !important; }
+
+    .section-label { color: #000 !important; }
+    .section-intro { color: #333 !important; }
+
+    .module, .book-card, .contact-link { border-color: #999 !important; break-inside: avoid; page-break-inside: avoid; }
+    .module-head { border-bottom-color: #ccc !important; }
+    .module-code { color: #333 !important; }
+    .module-status { color: #444 !important; border-color: #999 !important; }
+    .module-title, .book-title, .tl-role { color: #000 !important; }
+    .module-purpose, .book-desc, .tl-desc { color: #333 !important; }
+    .module-link { color: #000 !important; border-bottom-color: #000 !important; }
+    .spec-table tr { border-bottom-color: #ddd !important; }
+    .spec-table td.k { color: #555 !important; }
+    .spec-table td.v { color: #1a1a1a !important; }
+    .tag, .chip { color: #333 !important; border-color: #999 !important; }
+    .chip b { color: #000 !important; }
+
+    .timeline::before { background: #999 !important; }
+    .tl-entry { break-inside: avoid; page-break-inside: avoid; }
+    .tl-entry::before { border-color: #333 !important; background: #fff !important; }
+    .tl-entry.now::before { background: #333 !important; }
+    .tl-period { color: #555 !important; }
+
+    .cert-list li { border-bottom-color: #ddd !important; }
+    .cert-year { color: #555 !important; }
+    .cert-name { color: #1a1a1a !important; }
+
+    .pub-item { border-left-color: #999 !important; break-inside: avoid; }
+    .pub-year { color: #555 !important; }
+    .pub-title { color: #1a1a1a !important; }
+    .pub-meta { color: #555 !important; }
+    .pub-meta a { color: #555 !important; }
+
+    .contact-link { color: #000 !important; }
+    .contact-link .k { color: #555 !important; }
+
+    .footer { border-top-color: #999 !important; color: #555 !important; }
+    .footer a { color: #555 !important; }
+
+    a { text-decoration: underline; }
+
+    .section-block { margin-bottom: 40px; }
+  }
+
+  @page {
+    margin: 16mm;
+  }
 </style>
 </head>
 <body>
@@ -402,6 +500,15 @@
 <div class="reg-mark tr"></div>
 <div class="reg-mark bl"></div>
 <div class="reg-mark br"></div>
+
+<button class="print-btn" onclick="window.print()" aria-label="Imprimir ou salvar como PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+    <rect x="6" y="14" width="12" height="8"></rect>
+  </svg>
+  Baixar PDF
+</button>
 
 <div class="wrap">
 
@@ -422,7 +529,7 @@
   </div>
 
   <!-- MÓDULOS (3 FRENTES) -->
-  <div class="section-block">
+  <div class="section-block" id="github-modules">
     <div class="section-label">/// Módulos</div>
     <div class="modules">
 
