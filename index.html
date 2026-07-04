@@ -112,7 +112,7 @@
   .role-line{
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--paper-dim);
-    max-width: 620px;
+    max-width: 680px;
     line-height: 1.6;
     margin: 0 0 40px;
     opacity: 0;
@@ -150,12 +150,17 @@
     text-transform: uppercase;
     margin-bottom: 28px;
   }
-
-  .modules{
-    display: grid;
-    gap: 24px;
-    margin-bottom: 80px;
+  .section-block{ margin-bottom: 88px; }
+  .section-intro{
+    color: var(--paper-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: -14px 0 32px;
   }
+
+  /* --- modules (3 fronts) --- */
+  .modules{ display: grid; gap: 24px; }
 
   .module{
     border: 1px solid var(--line-strong);
@@ -177,11 +182,7 @@
     border-bottom: 1px solid var(--line);
     font-family: 'IBM Plex Mono', monospace;
   }
-  .module-code{
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: var(--amber);
-  }
+  .module-code{ font-size: 12px; letter-spacing: 0.1em; color: var(--amber); }
   .module-status{
     font-size: 11px;
     letter-spacing: 0.08em;
@@ -200,18 +201,8 @@
     gap: 28px;
   }
 
-  .module-title{
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 8px;
-  }
-  .module-purpose{
-    color: var(--paper-dim);
-    font-size: 0.94rem;
-    line-height: 1.6;
-    margin: 0 0 20px;
-  }
+  .module-title{ font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin: 0 0 8px; }
+  .module-purpose{ color: var(--paper-dim); font-size: 0.94rem; line-height: 1.6; margin: 0 0 20px; }
 
   .module-link{
     display: inline-flex;
@@ -230,11 +221,7 @@
   .spec-table{ width: 100%; border-collapse: collapse; }
   .spec-table tr{ border-bottom: 1px solid var(--line); }
   .spec-table tr:last-child{ border-bottom: none; }
-  .spec-table td{
-    padding: 9px 0;
-    font-size: 0.86rem;
-    vertical-align: top;
-  }
+  .spec-table td{ padding: 9px 0; font-size: 0.86rem; vertical-align: top; }
   .spec-table td.k{
     font-family: 'IBM Plex Mono', monospace;
     color: var(--paper-dim);
@@ -254,6 +241,127 @@
     padding: 2px 8px;
     border-radius: var(--radius);
     margin: 0 6px 6px 0;
+  }
+
+  /* --- timeline (experiência) --- */
+  .timeline{ position: relative; padding-left: 28px; }
+  .timeline::before{
+    content:"";
+    position: absolute;
+    left: 4px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--line-strong);
+  }
+  .tl-entry{
+    position: relative;
+    padding-bottom: 30px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.6s ease forwards;
+  }
+  .tl-entry:last-child{ padding-bottom: 0; }
+  .tl-entry::before{
+    content:"";
+    position: absolute;
+    left: -28px; top: 4px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1.5px solid var(--amber);
+  }
+  .tl-entry.now::before{ background: var(--amber); }
+  .tl-period{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .tl-role{ font-family:'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; margin: 0 0 6px; }
+  .tl-role span{ color: var(--paper-dim); font-family:'IBM Plex Sans'; font-weight: 400; font-size: 0.9rem; }
+  .tl-desc{ color: var(--paper-dim); font-size: 0.88rem; line-height: 1.6; max-width: 640px; margin: 0; }
+
+  /* --- certifications / formação grid --- */
+  .two-col{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .cert-list{ list-style: none; margin: 0; padding: 0; }
+  .cert-list li{
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .cert-list li:last-child{ border-bottom: none; }
+  .cert-year{
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--amber);
+    font-size: 0.78rem;
+    min-width: 40px;
+    padding-top: 1px;
+  }
+  .cert-name{ color: var(--paper); }
+
+  /* --- publications --- */
+  .pub-list{ display: grid; gap: 18px; }
+  .pub-item{
+    border-left: 2px solid var(--teal);
+    padding-left: 18px;
+  }
+  .pub-year{ font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.06em; }
+  .pub-title{ font-size: 0.92rem; color: var(--paper); margin: 4px 0 4px; line-height: 1.5; }
+  .pub-meta{ font-size: 0.78rem; color: var(--paper-dim); }
+  .pub-meta a{ color: var(--paper-dim); }
+
+  /* --- books --- */
+  .books{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .book-card{
+    border: 1px solid var(--line-strong);
+    padding: 20px;
+  }
+  .book-title{ font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px; }
+  .book-meta{ font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--amber); letter-spacing: 0.04em; margin-bottom: 10px; }
+  .book-desc{ color: var(--paper-dim); font-size: 0.85rem; line-height: 1.55; }
+
+  /* --- languages / affiliations --- */
+  .chips-row{ display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--paper);
+    border: 1px solid var(--line-strong);
+    padding: 7px 14px;
+    border-radius: var(--radius);
+  }
+  .chip b{ color: var(--amber); font-weight: 500; }
+
+  /* --- contact --- */
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .contact-link{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--line-strong);
+    padding: 14px 20px;
+    text-decoration: none;
+    color: var(--paper);
+    font-size: 0.88rem;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    flex: 1 1 220px;
+  }
+  .contact-link:hover{ border-color: var(--amber); color: var(--amber); }
+  .contact-link .k{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--paper-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
   }
 
   .footer{
@@ -277,6 +385,8 @@
 
   @media (max-width: 720px){
     .module-body{ grid-template-columns: 1fr; }
+    .two-col{ grid-template-columns: 1fr; gap: 32px; }
+    .books{ grid-template-columns: 1fr; }
     .wrap{ padding: 64px 20px 48px; }
     .meta-item{ padding-right: 16px; margin-right: 16px; }
   }
@@ -298,130 +408,245 @@
   <div class="eyebrow">Ficha Técnica · Perfil Profissional</div>
   <h1>Paulo da Silva Filho</h1>
   <p class="role-line">
-    <strong>Gestor Especialista de TI</strong> na SENAI Bahia, com mais de 25 anos em Tecnologia da Informação
-    e 19 anos dedicados à Educação Profissional. Atuo em três frentes distintas — gestão &amp; desenvolvimento,
-    pesquisa em IA e publicação de conteúdo.
+    <strong>Gestor de TI</strong> — Cibersegurança, Redes, Cloud, IA e Educação Tecnológica.
+    Mais de 26 anos de experiência unindo gestão técnica, infraestrutura e docência profissional.
+    Membro do Comitê Técnico Nacional de TI do SENAI, do Instituto de Defesa Cibernética (IDCiber)
+    e da APDADOS. Fundador da PSF Editora e Consultoria Tecnológica.
   </p>
 
   <div class="meta-strip">
     <div class="meta-item">LOCAL<b>Salvador, BA — Brasil</b></div>
-    <div class="meta-item">ÁREA<b>Gestão de TI &amp; Educação Profissional</b></div>
+    <div class="meta-item">EXPERIÊNCIA<b>26+ anos em TI</b></div>
     <div class="meta-item">COMITÊ<b>Comitê Nacional de TI — SENAI</b></div>
-    <div class="meta-item">ESCALA<b>1 perfil : 3 frentes</b></div>
+    <div class="meta-item">IDIOMAS<b>Português · Inglês · Italiano</b></div>
   </div>
 
-  <div class="section-label">/// Módulos</div>
+  <!-- MÓDULOS (3 FRENTES) -->
+  <div class="section-block">
+    <div class="section-label">/// Módulos</div>
+    <div class="modules">
 
-  <div class="modules">
-
-    <!-- MODULE 01 -->
-    <div class="module">
-      <div class="module-head">
-        <span class="module-code">MÓD. 01 — PRINCIPAL</span>
-        <span class="module-status on">ATIVO</span>
-      </div>
-      <div class="module-body">
-        <div>
-          <h2 class="module-title">profpaulofilho</h2>
-          <p class="module-purpose">
-            Perfil profissional central. Projetos de gestão de TI, plataformas educacionais
-            e ferramentas construídas para a rede SENAI.
-          </p>
-          <a class="module-link" href="https://github.com/profpaulofilho" target="_blank" rel="noopener">
-            Ver repositórios →
-          </a>
+      <div class="module">
+        <div class="module-head">
+          <span class="module-code">MÓD. 01 — PRINCIPAL</span>
+          <span class="module-status on">ATIVO</span>
         </div>
-        <table class="spec-table">
-          <tr>
-            <td class="k">Projetos</td>
-            <td class="v">Hub de IA para Docentes, Gerador de Descritivos V3, Hub MQCT SENAI Bahia, LotoGest, Casa HQ</td>
-          </tr>
-          <tr>
-            <td class="k">Stack</td>
-            <td class="v">
-              <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Vercel</span><span class="tag">Gemini API</span><span class="tag">Anthropic API</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="k">Propósito</td>
-            <td class="v">Hub principal — ponto de partida para conhecer meu trabalho</td>
-          </tr>
-        </table>
+        <div class="module-body">
+          <div>
+            <h2 class="module-title">profpaulofilho</h2>
+            <p class="module-purpose">
+              Perfil profissional central. Projetos de gestão de TI, plataformas educacionais
+              e ferramentas construídas para a rede SENAI.
+            </p>
+            <a class="module-link" href="https://github.com/profpaulofilho" target="_blank" rel="noopener">Ver repositórios →</a>
+          </div>
+          <table class="spec-table">
+            <tr><td class="k">Projetos</td><td class="v">Hub de IA para Docentes, Gerador de Descritivos V3, Hub MQCT SENAI Bahia, LotoGest, Casa HQ</td></tr>
+            <tr><td class="k">Stack</td><td class="v"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Vercel</span><span class="tag">Gemini API</span><span class="tag">Anthropic API</span></td></tr>
+            <tr><td class="k">Propósito</td><td class="v">Hub principal — ponto de partida para conhecer meu trabalho</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-head">
+          <span class="module-code">MÓD. 02 — PROTÓTIPO</span>
+          <span class="module-status exp">EXPERIMENTAL</span>
+        </div>
+        <div class="module-body">
+          <div>
+            <h2 class="module-title">professortipaulo-prog</h2>
+            <p class="module-purpose">Pesquisa e prototipagem de assistentes de IA pessoal — integração de agentes, automação e interfaces conversacionais.</p>
+            <a class="module-link" href="https://github.com/professortipaulo-prog" target="_blank" rel="noopener">Ver repositórios →</a>
+          </div>
+          <table class="spec-table">
+            <tr><td class="k">Projetos</td><td class="v">AURA — assistente de IA pessoal · ARGUS — protótipo complementar</td></tr>
+            <tr><td class="k">Stack</td><td class="v"><span class="tag">APIs de IA</span><span class="tag">Automação</span><span class="tag">IoT</span></td></tr>
+            <tr><td class="k">Propósito</td><td class="v">Conta isolada para experimentos de IA fora do escopo institucional</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="module-head">
+          <span class="module-code">MÓD. 03 — EDITORIAL</span>
+          <span class="module-status on">ATIVO</span>
+        </div>
+        <div class="module-body">
+          <div>
+            <h2 class="module-title">paulosilvafilhoba</h2>
+            <p class="module-purpose">PSF Editora e Consultoria — publicação de livros sobre IA e produtividade, além do projeto Acadêmico Fácil.</p>
+            <a class="module-link" href="https://github.com/paulosilvafilhoba" target="_blank" rel="noopener">Ver repositórios →</a>
+          </div>
+          <table class="spec-table">
+            <tr><td class="k">Projetos</td><td class="v">"Procrastinação Artificial" (Vol. 1), "IA no Bolso" — Amazon Kindle · Acadêmico Fácil</td></tr>
+            <tr><td class="k">Stack</td><td class="v"><span class="tag">Amazon KDP</span><span class="tag">Conteúdo</span><span class="tag">Educação</span></td></tr>
+            <tr><td class="k">Propósito</td><td class="v">Marca editorial e acadêmica, independente da atuação institucional</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPERIÊNCIA PROFISSIONAL -->
+  <div class="section-block">
+    <div class="section-label">/// Experiência Profissional</div>
+    <div class="timeline">
+
+      <div class="tl-entry now">
+        <div class="tl-period">Atual</div>
+        <h3 class="tl-role">Fundador <span>— PSF Editora e Consultoria Tecnológica</span></h3>
+        <p class="tl-desc">Consultoria em TI, automação, IA aplicada e editoração digital.</p>
+      </div>
+
+      <div class="tl-entry now">
+        <div class="tl-period">2023 — Atual</div>
+        <h3 class="tl-role">Gestor Especialista de TI <span>— SENAI Bahia</span></h3>
+        <p class="tl-desc">Comitê nacional de TI, elaboração curricular, formação docente e desenvolvimento de avaliações do SAEP (Sistema de Avaliação da Educação Profissional).</p>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-period">2021 — 2023</div>
+        <h3 class="tl-role">Coordenador de Núcleos <span>— SENAI Bahia, Unidade Dendezeiros</span></h3>
+        <p class="tl-desc">Gestão de núcleos acadêmicos, administrativos e de TI — Documentação, Secretaria de Curso, Organização Acadêmica, Carreira Profissional, Atendimento ao Aluno.</p>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-period">2017 — 2021</div>
+        <h3 class="tl-role">Coordenador do Núcleo de TI <span>— SENAI Bahia</span></h3>
+        <p class="tl-desc">Modernização de ~1.000 estações de trabalho; implantação de mecanismos de segurança e segmentação de rede.</p>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-period">2014 — 2016</div>
+        <h3 class="tl-role">Instrutor e Coordenador de TI em EaD <span>— SENAI Bahia (ITED)</span></h3>
+        <p class="tl-desc">Projeto EPITEC, com aulas técnicas de redes de computadores transmitidas ao vivo.</p>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-period">2007 — 2014</div>
+        <h3 class="tl-role">Instrutor de TI <span>— SENAI Bahia</span></h3>
+        <p class="tl-desc">Cursos de Cisco, Linux, redes e cabeamento estruturado.</p>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-period">2001 — 2016</div>
+        <h3 class="tl-role">Instrutor de TI <span>— SENAC Bahia, Casa do Comércio</span></h3>
+        <p class="tl-desc">Aulas de informática, instalação e administração de redes, Linux e manutenção de micro (períodos intercalados).</p>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-period">1999 — 2004</div>
+        <h3 class="tl-role">Início de carreira <span>— Unidade Móvel, SOS Computadores, Milsoft Informática</span></h3>
+        <p class="tl-desc">Instrutoria de informática e suporte técnico de hardware.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORMAÇÃO & CERTIFICAÇÕES -->
+  <div class="section-block">
+    <div class="section-label">/// Formação &amp; Certificações</div>
+    <div class="two-col">
+      <div>
+        <h3 class="tl-role" style="margin-bottom:16px;">Formação Acadêmica</h3>
+        <ul class="cert-list">
+          <li><span class="cert-year">2026</span><span class="cert-name">Pós-Graduação em Elaboração de Currículos</span></li>
+          <li><span class="cert-year">2025</span><span class="cert-name">Pós-Graduação em Desenvolvimento Full Stack</span></li>
+          <li><span class="cert-year">2023</span><span class="cert-name">Pós-Graduação em Segurança da Informação</span></li>
+          <li><span class="cert-year">2015</span><span class="cert-name">Pós-Graduação em Docência da Educação Profissional e Tecnológica</span></li>
+          <li><span class="cert-year">2014</span><span class="cert-name">Pós-Graduação em Redes de Computadores</span></li>
+          <li><span class="cert-year">2013</span><span class="cert-name">Graduação em Gestão da Tecnologia da Informação</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="tl-role" style="margin-bottom:16px;">Certificações &amp; Cursos</h3>
+        <ul class="cert-list">
+          <li><span class="cert-year">2026</span><span class="cert-name">Hackers do Bem — Governança, Risco e Compliance</span></li>
+          <li><span class="cert-year">2026</span><span class="cert-name">ENAP — Engenharia de Dados e IA Aplicada</span></li>
+          <li><span class="cert-year">2026</span><span class="cert-name">TEACHY — IA para Gestores e Docentes</span></li>
+          <li><span class="cert-year">2025</span><span class="cert-name">ENAP — CIS Controls (Center for Internet Security)</span></li>
+          <li><span class="cert-year">2025</span><span class="cert-name">Google Cloud Computing Foundations</span></li>
+          <li><span class="cert-year">2025</span><span class="cert-name">ENAP — Inteligência Artificial Generativa</span></li>
+          <li><span class="cert-year">2024</span><span class="cert-name">EXIN Information Security Foundation (ISO/IEC 27001)</span></li>
+          <li><span class="cert-year">2021</span><span class="cert-name">Perícia Forense Computacional — Cruzeiro do Sul</span></li>
+          <li><span class="cert-year">2021</span><span class="cert-name">HUAWEI — Cloud, Server, Storage, SDN/NFV</span></li>
+          <li><span class="cert-year">2021</span><span class="cert-name">SKILFRONT — ISO/IEC 27001 Security Associate</span></li>
+          <li><span class="cert-year">2021</span><span class="cert-name">CISCO — Network Security</span></li>
+          <li><span class="cert-year">2019</span><span class="cert-name">4LINUX — Linux System Administration</span></li>
+          <li><span class="cert-year">2019</span><span class="cert-name">4LINUX — Servers &amp; DevOps</span></li>
+          <li><span class="cert-year">2016</span><span class="cert-name">MTCNA MikroTik</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVROS & PUBLICAÇÕES -->
+  <div class="section-block">
+    <div class="section-label">/// Livros &amp; Publicações</div>
+    <div class="books" style="margin-bottom:36px;">
+      <div class="book-card">
+        <div class="book-meta">TRILOGIA ARTIFICIAL · VOL. 1 · 2026</div>
+        <h3 class="book-title">Procrastinação Artificial</h3>
+        <p class="book-desc">Primeiro volume da trilogia sobre produtividade, IA e os novos hábitos de trabalho. Disponível na Amazon Kindle.</p>
+      </div>
+      <div class="book-card">
+        <div class="book-meta">GUIA PRÁTICO · 2026</div>
+        <h3 class="book-title">IA no Bolso</h3>
+        <p class="book-desc">50 comandos práticos de Inteligência Artificial para aplicação real e imediata no dia a dia. Disponível na Amazon Kindle.</p>
       </div>
     </div>
 
-    <!-- MODULE 02 -->
-    <div class="module">
-      <div class="module-head">
-        <span class="module-code">MÓD. 02 — PROTÓTIPO</span>
-        <span class="module-status exp">EXPERIMENTAL</span>
+    <h3 class="tl-role" style="margin-bottom:16px;">Artigos Publicados (TCC)</h3>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <p class="pub-title">Desafios de preservação e privacidade de banco de dados no mundo digital</p>
+        <div class="pub-meta">TCC — Especialização em Segurança da Informação</div>
       </div>
-      <div class="module-body">
-        <div>
-          <h2 class="module-title">professortipaulo-prog</h2>
-          <p class="module-purpose">
-            Pesquisa e prototipagem de assistentes de IA pessoal — integração de agentes,
-            automação e interfaces conversacionais.
-          </p>
-          <a class="module-link" href="https://github.com/professortipaulo-prog" target="_blank" rel="noopener">
-            Ver repositórios →
-          </a>
-        </div>
-        <table class="spec-table">
-          <tr>
-            <td class="k">Projetos</td>
-            <td class="v">AURA — assistente de IA pessoal · ARGUS — protótipo complementar</td>
-          </tr>
-          <tr>
-            <td class="k">Stack</td>
-            <td class="v">
-              <span class="tag">APIs de IA</span><span class="tag">Automação</span><span class="tag">IoT</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="k">Propósito</td>
-            <td class="v">Conta isolada para experimentos de IA fora do escopo institucional</td>
-          </tr>
-        </table>
+      <div class="pub-item">
+        <div class="pub-year">2016</div>
+        <p class="pub-title">Riscos de segurança em tecnologias wireless em ambientes domésticos</p>
+        <div class="pub-meta">TCC — Especialização em Redes de Computadores</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2015</div>
+        <p class="pub-title">Nota não vem por acaso: o ato de avaliar na educação profissional</p>
+        <div class="pub-meta">TCC — Especialização em Docência da Educação Profissional e Tecnológica</div>
       </div>
     </div>
+  </div>
 
-    <!-- MODULE 03 -->
-    <div class="module">
-      <div class="module-head">
-        <span class="module-code">MÓD. 03 — EDITORIAL</span>
-        <span class="module-status on">ATIVO</span>
-      </div>
-      <div class="module-body">
-        <div>
-          <h2 class="module-title">paulosilvafilhoba</h2>
-          <p class="module-purpose">
-            PSF Editora e Consultoria — publicação de livros sobre IA e produtividade,
-            além do projeto Acadêmico Fácil.
-          </p>
-          <a class="module-link" href="https://github.com/paulosilvafilhoba" target="_blank" rel="noopener">
-            Ver repositórios →
-          </a>
-        </div>
-        <table class="spec-table">
-          <tr>
-            <td class="k">Projetos</td>
-            <td class="v">"Procrastinação Artificial" (Vol. 1), "IA no Bolso" — Amazon KDP · Acadêmico Fácil</td>
-          </tr>
-          <tr>
-            <td class="k">Stack</td>
-            <td class="v">
-              <span class="tag">Amazon KDP</span><span class="tag">Conteúdo</span><span class="tag">Educação</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="k">Propósito</td>
-            <td class="v">Marca editorial e acadêmica, independente da atuação institucional</td>
-          </tr>
-        </table>
-      </div>
+  <!-- VÍNCULOS & IDIOMAS -->
+  <div class="section-block">
+    <div class="section-label">/// Vínculos &amp; Idiomas</div>
+    <div class="chips-row" style="margin-bottom:20px;">
+      <span class="chip"><b>Membro ·</b> Comitê Técnico Nacional de TI — SENAI</span>
+      <span class="chip"><b>Membro ·</b> Instituto de Defesa Cibernética (IDCiber)</span>
+      <span class="chip"><b>Membro ·</b> APDADOS — Privacidade de Dados</span>
     </div>
+    <div class="chips-row">
+      <span class="chip"><b>Português ·</b> Nativo</span>
+      <span class="chip"><b>Inglês ·</b> Nível médio</span>
+      <span class="chip"><b>Italiano ·</b> Nível básico</span>
+    </div>
+  </div>
 
+  <!-- CONTATO -->
+  <div class="section-block" style="margin-bottom:56px;">
+    <div class="section-label">/// Contato</div>
+    <div class="contact-row">
+      <a class="contact-link" href="https://linkedin.com/in/paulo-da-silva-filho" target="_blank" rel="noopener">
+        <div><span class="k">LinkedIn</span>paulo-da-silva-filho</div>
+      </a>
+      <a class="contact-link" href="http://lattes.cnpq.br/4447796989834167" target="_blank" rel="noopener">
+        <div><span class="k">Currículo Lattes</span>Ver currículo acadêmico</div>
+      </a>
+      <a class="contact-link" href="https://www.psfeditoraeconsultoria.com.br" target="_blank" rel="noopener">
+        <div><span class="k">PSF Editora e Consultoria</span>psfeditoraeconsultoria.com.br</div>
+      </a>
+    </div>
   </div>
 
   <div class="footer">
