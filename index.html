@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paulo da Silva Filho — Ficha Técnica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10203D;
+    --bg-panel: #0B1830;
+    --line: #3A5273;
+    --line-strong: #6C89AC;
+    --paper: #E9EEF6;
+    --paper-dim: #9FB0C8;
+    --amber: #E5A13A;
+    --amber-dim: #8A6A34;
+    --teal: #5FA79E;
+    --radius: 2px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+    background-color: var(--bg);
+    position: relative;
+  }
+
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, rgba(16,32,61,0) 0%, var(--bg) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .reg-mark{
+    position: fixed;
+    width: 22px;
+    height: 22px;
+    z-index: 5;
+    opacity: 0.6;
+  }
+  .reg-mark::before, .reg-mark::after{
+    content:"";
+    position: absolute;
+    background: var(--line-strong);
+  }
+  .reg-mark::before{ width: 100%; height: 1px; top: 50%; left:0; }
+  .reg-mark::after{ width: 1px; height: 100%; left: 50%; top:0; }
+  .reg-mark.tl{ top: 18px; left: 18px; }
+  .reg-mark.tr{ top: 18px; right: 18px; }
+  .reg-mark.bl{ bottom: 18px; left: 18px; }
+  .reg-mark.br{ bottom: 18px; right: 18px; }
+
+  .wrap{
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 96px 32px 64px;
+  }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    opacity: 0;
+    animation: rise 0.7s ease forwards;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 26px; height: 1px;
+    background: var(--amber);
+  }
+
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: rise 0.8s ease 0.1s forwards;
+  }
+
+  .role-line{
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--paper-dim);
+    max-width: 620px;
+    line-height: 1.6;
+    margin: 0 0 40px;
+    opacity: 0;
+    animation: rise 0.8s ease 0.2s forwards;
+  }
+  .role-line strong{ color: var(--paper); font-weight: 600; }
+
+  .meta-strip{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    margin-bottom: 72px;
+    opacity: 0;
+    animation: rise 0.8s ease 0.3s forwards;
+  }
+  .meta-item{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--paper-dim);
+    padding: 12px 24px 12px 0;
+    margin-right: 24px;
+    border-right: 1px solid var(--line);
+  }
+  .meta-item:last-child{ border-right: none; }
+  .meta-item b{ color: var(--paper); display:block; font-family:'IBM Plex Sans'; font-size: 13px; margin-top: 2px; font-weight: 500;}
+
+  .section-label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .modules{
+    display: grid;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  .module{
+    border: 1px solid var(--line-strong);
+    background: linear-gradient(180deg, rgba(233,238,246,0.02), rgba(233,238,246,0));
+    position: relative;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.7s ease forwards;
+  }
+  .module:nth-child(1){ animation-delay: 0.1s; }
+  .module:nth-child(2){ animation-delay: 0.22s; }
+  .module:nth-child(3){ animation-delay: 0.34s; }
+
+  .module-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .module-code{
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+  }
+  .module-status{
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--paper-dim);
+    border: 1px solid var(--line-strong);
+    padding: 3px 10px;
+    border-radius: var(--radius);
+  }
+  .module-status.on{ color: var(--teal); border-color: var(--teal); }
+  .module-status.exp{ color: var(--amber); border-color: var(--amber-dim); }
+
+  .module-body{
+    padding: 28px 24px 24px;
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr;
+    gap: 28px;
+  }
+
+  .module-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .module-purpose{
+    color: var(--paper-dim);
+    font-size: 0.94rem;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  .module-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 3px;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+  .module-link:hover{ gap: 13px; color: var(--amber); }
+
+  .spec-table{ width: 100%; border-collapse: collapse; }
+  .spec-table tr{ border-bottom: 1px solid var(--line); }
+  .spec-table tr:last-child{ border-bottom: none; }
+  .spec-table td{
+    padding: 9px 0;
+    font-size: 0.86rem;
+    vertical-align: top;
+  }
+  .spec-table td.k{
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--paper-dim);
+    width: 110px;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    padding-top: 11px;
+  }
+  .spec-table td.v{ color: var(--paper); line-height: 1.55; }
+  .tag{
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--teal);
+    border: 1px solid rgba(95,167,158,0.4);
+    padding: 2px 8px;
+    border-radius: var(--radius);
+    margin: 0 6px 6px 0;
+  }
+
+  .footer{
+    border-top: 1px solid var(--line-strong);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--paper-dim);
+    letter-spacing: 0.05em;
+  }
+  .footer a{ color: var(--paper-dim); }
+
+  @keyframes rise{
+    from{ opacity: 0; transform: translateY(14px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 720px){
+    .module-body{ grid-template-columns: 1fr; }
+    .wrap{ padding: 64px 20px 48px; }
+    .meta-item{ padding-right: 16px; margin-right: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-delay: 0s !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="reg-mark tl"></div>
+<div class="reg-mark tr"></div>
+<div class="reg-mark bl"></div>
+<div class="reg-mark br"></div>
+
+<div class="wrap">
+
+  <div class="eyebrow">Ficha Técnica · Perfil Profissional</div>
+  <h1>Paulo da Silva Filho</h1>
+  <p class="role-line">
+    <strong>Gestor Especialista de TI</strong> na SENAI Bahia, com mais de 25 anos em Tecnologia da Informação
+    e 19 anos dedicados à Educação Profissional. Atuo em três frentes distintas — gestão &amp; desenvolvimento,
+    pesquisa em IA e publicação de conteúdo.
+  </p>
+
+  <div class="meta-strip">
+    <div class="meta-item">LOCAL<b>Salvador, BA — Brasil</b></div>
+    <div class="meta-item">ÁREA<b>Gestão de TI &amp; Educação Profissional</b></div>
+    <div class="meta-item">COMITÊ<b>Comitê Nacional de TI — SENAI</b></div>
+    <div class="meta-item">ESCALA<b>1 perfil : 3 frentes</b></div>
+  </div>
+
+  <div class="section-label">/// Módulos</div>
+
+  <div class="modules">
+
+    <!-- MODULE 01 -->
+    <div class="module">
+      <div class="module-head">
+        <span class="module-code">MÓD. 01 — PRINCIPAL</span>
+        <span class="module-status on">ATIVO</span>
+      </div>
+      <div class="module-body">
+        <div>
+          <h2 class="module-title">profpaulofilho</h2>
+          <p class="module-purpose">
+            Perfil profissional central. Projetos de gestão de TI, plataformas educacionais
+            e ferramentas construídas para a rede SENAI.
+          </p>
+          <a class="module-link" href="https://github.com/profpaulofilho" target="_blank" rel="noopener">
+            Ver repositórios →
+          </a>
+        </div>
+        <table class="spec-table">
+          <tr>
+            <td class="k">Projetos</td>
+            <td class="v">Hub de IA para Docentes, Gerador de Descritivos V3, Hub MQCT SENAI Bahia, LotoGest, Casa HQ</td>
+          </tr>
+          <tr>
+            <td class="k">Stack</td>
+            <td class="v">
+              <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Vercel</span><span class="tag">Gemini API</span><span class="tag">Anthropic API</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="k">Propósito</td>
+            <td class="v">Hub principal — ponto de partida para conhecer meu trabalho</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- MODULE 02 -->
+    <div class="module">
+      <div class="module-head">
+        <span class="module-code">MÓD. 02 — PROTÓTIPO</span>
+        <span class="module-status exp">EXPERIMENTAL</span>
+      </div>
+      <div class="module-body">
+        <div>
+          <h2 class="module-title">professortipaulo-prog</h2>
+          <p class="module-purpose">
+            Pesquisa e prototipagem de assistentes de IA pessoal — integração de agentes,
+            automação e interfaces conversacionais.
+          </p>
+          <a class="module-link" href="https://github.com/professortipaulo-prog" target="_blank" rel="noopener">
+            Ver repositórios →
+          </a>
+        </div>
+        <table class="spec-table">
+          <tr>
+            <td class="k">Projetos</td>
+            <td class="v">AURA — assistente de IA pessoal · ARGUS — protótipo complementar</td>
+          </tr>
+          <tr>
+            <td class="k">Stack</td>
+            <td class="v">
+              <span class="tag">APIs de IA</span><span class="tag">Automação</span><span class="tag">IoT</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="k">Propósito</td>
+            <td class="v">Conta isolada para experimentos de IA fora do escopo institucional</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- MODULE 03 -->
+    <div class="module">
+      <div class="module-head">
+        <span class="module-code">MÓD. 03 — EDITORIAL</span>
+        <span class="module-status on">ATIVO</span>
+      </div>
+      <div class="module-body">
+        <div>
+          <h2 class="module-title">paulosilvafilhoba</h2>
+          <p class="module-purpose">
+            PSF Editora e Consultoria — publicação de livros sobre IA e produtividade,
+            além do projeto Acadêmico Fácil.
+          </p>
+          <a class="module-link" href="https://github.com/paulosilvafilhoba" target="_blank" rel="noopener">
+            Ver repositórios →
+          </a>
+        </div>
+        <table class="spec-table">
+          <tr>
+            <td class="k">Projetos</td>
+            <td class="v">"Procrastinação Artificial" (Vol. 1), "IA no Bolso" — Amazon KDP · Acadêmico Fácil</td>
+          </tr>
+          <tr>
+            <td class="k">Stack</td>
+            <td class="v">
+              <span class="tag">Amazon KDP</span><span class="tag">Conteúdo</span><span class="tag">Educação</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="k">Propósito</td>
+            <td class="v">Marca editorial e acadêmica, independente da atuação institucional</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>© 2026 Paulo da Silva Filho — Salvador, BA</span>
+    <span><a href="https://github.com/profpaulofilho" target="_blank" rel="noopener">github.com/profpaulofilho</a></span>
+  </div>
+
+</div>
+
+</body>
+</html>
