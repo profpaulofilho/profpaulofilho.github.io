@@ -395,36 +395,45 @@
     *{ animation-duration: 0.01ms !important; animation-delay: 0s !important; }
   }
 
-  /* --- print button --- */
-  .print-btn{
+  /* --- action buttons (print + download) --- */
+  .action-buttons{
     position: fixed;
     top: 24px;
     right: 24px;
     z-index: 20;
     display: flex;
+    gap: 10px;
+  }
+  .print-btn, .download-btn{
+    display: flex;
     align-items: center;
     gap: 8px;
     background: var(--bg);
-    color: var(--amber);
-    border: 1px solid var(--amber);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 10px 16px;
     cursor: pointer;
+    text-decoration: none;
     transition: background 0.2s ease, color 0.2s ease;
+    border: 1px solid var(--amber);
+    color: var(--amber);
   }
-  .print-btn:hover{ background: var(--amber); color: var(--bg); }
-  .print-btn svg{ width: 14px; height: 14px; }
+  .print-btn:hover, .download-btn:hover{ background: var(--amber); color: var(--bg); }
+  .download-btn{ border-color: var(--teal); color: var(--teal); }
+  .download-btn:hover{ background: var(--teal); color: var(--bg); }
+  .print-btn svg, .download-btn svg{ width: 14px; height: 14px; }
 
   @media (max-width: 720px){
-    .print-btn{ top: 14px; right: 14px; padding: 8px 12px; font-size: 10px; }
+    .action-buttons{ top: 14px; right: 14px; gap: 8px; }
+    .print-btn, .download-btn{ padding: 8px 10px; font-size: 0; }
+    .print-btn svg, .download-btn svg{ width: 16px; height: 16px; }
   }
 
   /* --- print stylesheet (PDF / paper output) --- */
   @media print {
-    .print-btn, .reg-mark, #github-modules { display: none !important; }
+    .action-buttons, .reg-mark, #github-modules { display: none !important; }
 
     * { animation: none !important; opacity: 1 !important; transform: none !important; }
 
@@ -501,14 +510,24 @@
 <div class="reg-mark bl"></div>
 <div class="reg-mark br"></div>
 
-<button class="print-btn" onclick="window.print()" aria-label="Imprimir ou salvar como PDF">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="6 9 6 2 18 2 18 9"></polyline>
-    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-    <rect x="6" y="14" width="12" height="8"></rect>
-  </svg>
-  Baixar PDF
-</button>
+<div class="action-buttons">
+  <button class="print-btn" onclick="window.print()" aria-label="Imprimir ou salvar como PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 6 2 18 2 18 9"></polyline>
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+      <rect x="6" y="14" width="12" height="8"></rect>
+    </svg>
+    Imprimir
+  </button>
+  <a class="download-btn" href="curriculo.pdf" download="Paulo-da-Silva-Filho-Curriculo.pdf" aria-label="Baixar currículo completo em PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    Currículo PDF
+  </a>
+</div>
 
 <div class="wrap">
 
@@ -744,6 +763,9 @@
   <div class="section-block" style="margin-bottom:56px;">
     <div class="section-label">/// Contato</div>
     <div class="contact-row">
+      <a class="contact-link" href="curriculo.pdf" download="Paulo-da-Silva-Filho-Curriculo.pdf">
+        <div><span class="k">Currículo Completo</span>Baixar PDF</div>
+      </a>
       <a class="contact-link" href="https://linkedin.com/in/paulo-da-silva-filho" target="_blank" rel="noopener">
         <div><span class="k">LinkedIn</span>paulo-da-silva-filho</div>
       </a>
