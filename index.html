@@ -336,6 +336,48 @@
   }
   .chip b{ color: var(--amber); font-weight: 500; }
 
+  .credential-card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--line-strong);
+    padding: 18px 22px;
+    margin-top: 20px;
+    max-width: 420px;
+  }
+  .credential-card img{
+    width: 84px;
+    height: 84px;
+    background: #fff;
+    padding: 6px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .credential-info .k{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--paper-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .credential-info .title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+  }
+  .credential-info a{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--teal);
+  }
+  .credential-info a:hover{ color: var(--amber); border-color: var(--amber); }
+
   /* --- contact --- */
   .contact-row{
     display: flex;
@@ -756,6 +798,15 @@
       <span class="chip"><b>Português ·</b> Nativo</span>
       <span class="chip"><b>Inglês ·</b> Nível médio</span>
       <span class="chip"><b>Italiano ·</b> Nível básico</span>
+    </div>
+
+    <div class="credential-card">
+      <img src="idciber-qrcode.png" alt="QR Code de validação da credencial IDCiber">
+      <div class="credential-info">
+        <span class="k">Credencial verificável</span>
+        <div class="title">Instituto de Defesa Cibernética</div>
+        <a href="https://membros.idciber.org/validate/3efa20e33aad8c5103978afd6897d8673f5bec30a410ca6383b5333fc5187640" target="_blank" rel="noopener">Validar credencial →</a>
+      </div>
     </div>
   </div>
 
