@@ -1,6 +1,6 @@
 # Olá, eu sou o Paulo da Silva Filho 👋
 
-**Gestor Especialista de TI** na SENAI Bahia GEP, com mais de 25 anos de experiência em Tecnologia da Informação e mais de 19 anos dedicados à Educação Profissional e Tecnológica.
+**Gestor Especialista de TI** na SENAI Bahia GEP, com mais de 26 anos de experiência em Tecnologia da Informação e mais de 19 anos dedicados à Educação Profissional e Tecnológica.
 
 Atuo no **Comitê Nacional de TI do SENAI**, contribuindo para o desenvolvimento curricular de cursos técnicos em Informática, Desenvolvimento de Sistemas, Inteligência Artificial e Jogos Digitais.
 
