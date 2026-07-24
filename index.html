@@ -283,6 +283,16 @@
   .tl-role span a{ color: var(--paper-dim); text-decoration: underline; text-underline-offset: 3px; }
   .tl-role span a:hover{ color: var(--amber); }
   .tl-desc{ color: var(--paper-dim); font-size: 0.88rem; line-height: 1.6; max-width: 640px; margin: 0; }
+  .tl-desc b{ color: var(--paper); font-weight: 600; }
+  .tl-stats{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .tl-stat{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber);
+    border: 1px solid rgba(229,161,58,0.4);
+    padding: 3px 10px;
+    border-radius: var(--radius);
+  }
 
   /* --- certifications / formação grid --- */
   .two-col{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
@@ -555,6 +565,8 @@
     .module-status { color: #444 !important; border-color: #999 !important; }
     .module-title, .book-title, .tl-role { color: #000 !important; }
     .module-purpose, .book-desc, .tl-desc { color: #333 !important; }
+    .tl-desc b { color: #000 !important; }
+    .tl-stat { color: #333 !important; border-color: #999 !important; }
     .module-link { color: #000 !important; border-bottom-color: #000 !important; }
     .book-title a, .tl-role span a { color: #000 !important; }
     .spec-table tr { border-bottom-color: #ddd !important; }
@@ -751,13 +763,15 @@
             Solução criada para os laboratórios de informática do SENAI Dendezeiros: ao ler o
             QR code fixado no computador, o docente ou qualquer usuário é direcionado a uma
             página de chamado, registrando a situação do equipamento e agilizando o atendimento
-            da equipe do NTI (Núcleo de TI) coordenada por mim.
+            da equipe do NTI (Núcleo de TI) coordenada por mim, em um parque de mais de 1.000
+            computadores.
           </p>
           <a class="module-link" href="https://youtu.be/o5muhiyqMd8" target="_blank" rel="noopener">Ver vídeo do projeto →</a>
         </div>
         <table class="spec-table">
+          <tr><td class="k">Resultado</td><td class="v"><span class="tl-stat">−80% no tempo de atendimento</span> <span class="tl-stat">+produtividade e feedbacks positivos</span></td></tr>
           <tr><td class="k">Como funciona</td><td class="v">QR code no equipamento → página de chamado → registro da situação → atendimento do NTI</td></tr>
-          <tr><td class="k">Unidade</td><td class="v">SENAI Bahia — Unidade Dendezeiros</td></tr>
+          <tr><td class="k">Unidade</td><td class="v">SENAI Bahia — Unidade Dendezeiros (parque de 1.000+ computadores)</td></tr>
           <tr><td class="k">Tags</td><td class="v"><span class="tag">Gestão de Chamados</span><span class="tag">QR Code</span><span class="tag">Manutenção de Laboratórios</span><span class="tag">Suporte de TI</span></td></tr>
         </table>
       </div>
@@ -780,7 +794,12 @@
       <div class="tl-entry now">
         <div class="tl-period">2023 — Atual</div>
         <h3 class="tl-role">Gestor Especialista de TI <span>— SENAI Bahia</span></h3>
-        <p class="tl-desc">Comitê nacional de TI, elaboração curricular, formação docente e desenvolvimento de avaliações do SAEP (Sistema de Avaliação da Educação Profissional).</p>
+        <p class="tl-desc">
+          Comitê Técnico Nacional de TI, contribuindo para a <b>atualização dos cursos de Desenvolvimento de Sistemas,
+          Informática para Internet e Programação de Jogos Digitais</b>, e para a <b>criação do curso Técnico em
+          Inteligência Artificial</b>. Treinamento técnico de <b>centenas de docentes de TI</b>, desenvolvimento de
+          avaliações do SAEP (Sistema de Avaliação da Educação Profissional) e homologação de cursos e equipamentos.
+        </p>
       </div>
 
       <div class="tl-entry">
@@ -792,7 +811,11 @@
       <div class="tl-entry">
         <div class="tl-period">2017 — 2021</div>
         <h3 class="tl-role">Coordenador do Núcleo de TI <span>— SENAI Bahia</span></h3>
-        <p class="tl-desc">Modernização de ~1.000 estações de trabalho; implantação de mecanismos de segurança e segmentação de rede.</p>
+        <p class="tl-desc">
+          Modernização de <b>~1.000 estações de trabalho</b>, incluindo reestruturação de cabeamento e implantação
+          de mecanismos de segurança e segmentação de rede. Criação do <b>GCN</b>, sistema de chamados via QR code
+          que <b>reduziu o tempo de atendimento em 80%</b>.
+        </p>
       </div>
 
       <div class="tl-entry">
@@ -808,9 +831,9 @@
       </div>
 
       <div class="tl-entry">
-        <div class="tl-period">2001 — 2016</div>
+        <div class="tl-period">2004 — 2016</div>
         <h3 class="tl-role">Instrutor de TI <span>— SENAC Bahia, Casa do Comércio</span></h3>
-        <p class="tl-desc">Aulas de informática, instalação e administração de redes, Linux e manutenção de micro (períodos intercalados).</p>
+        <p class="tl-desc">Aulas de informática, instalação e administração de redes, Linux e manutenção de micro (dois períodos intercalados).</p>
       </div>
 
       <div class="tl-entry">
@@ -947,7 +970,7 @@
         </div>
         <div class="media-body">
           <span class="media-kicker">Curso EAD · SENAI</span>
-          <h3 class="media-title">Redes de Computadores — SENAI Lauro de Freitas (Parte 1)</h3>
+          <h3 class="media-title">Redes de Computadores — Colégio Lauro de Freitas (Parte 1)</h3>
           <p class="media-desc">Apresentação do ambiente virtual de aprendizagem, atividades do curso e livros com Realidade Aumentada.</p>
         </div>
       </a>
@@ -961,7 +984,7 @@
         </div>
         <div class="media-body">
           <span class="media-kicker">Curso EAD · SENAI</span>
-          <h3 class="media-title">Redes de Computadores — SENAI Lauro de Freitas (Parte 2)</h3>
+          <h3 class="media-title">Redes de Computadores — Colégio Lauro de Freitas (Parte 2)</h3>
           <p class="media-desc">Continuação do tour pelo curso: equipamentos e laboratórios de prática do curso técnico de redes.</p>
         </div>
       </a>
